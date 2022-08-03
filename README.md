@@ -5,4 +5,4 @@ BrickEngine is a 2d engine for brick/part buidling made in GameMaker: studio 1.4
 sort of it will no longer have the Roblox2D brand in it.
 
 # Is there a documentation?
-im actually making it right now as you read once im making while writhing the code so yeah a dcoumentation will come with the code later
+im working on a documentation website for now it's unfinished but the link is https://josecreative.github.io/BrickEngine-Docs/
