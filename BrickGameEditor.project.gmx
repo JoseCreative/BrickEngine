@@ -11,6 +11,7 @@
     <sprite>sprites\spr_icons</sprite>
     <sprite>sprites\spr_check</sprite>
     <sprite>sprites\spr_value</sprite>
+    <sprite>sprites\spr_surfaces</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

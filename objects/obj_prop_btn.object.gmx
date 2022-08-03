@@ -71,12 +71,26 @@ if value_type = valuetypes.text {
     mask_index = spr_value
     show_value = string(value)
 }
+
 if prop_name != "" {
-    ds_map_replace(map,prop_name,show_value)
-    value_type = ds_map_find_value(config_map,prop_name)
+    if ds_map_exists(map,prop_name) {
+        if global.cur_obj.object_index = obj_part {
+            if global.cur_obj.move = false {
+                ds_map_replace(map,prop_name,show_value)
+                value_type = ds_map_find_value(config_map,prop_name)
+            } else {
+                if prop_name = "X" {
+                    value = global.cur_obj.x
+                } else
+                if prop_name = "Y" {
+                    value = global.cur_obj.y
+                }
+                ds_map_replace(map,"X",mouse_x)
+                ds_map_replace(map,"Y",mouse_y)
+            }
+        }
+    }
 }
-
-
 
 
 if position_meeting(mouse_x,mouse_y,obj_prop_btn) {

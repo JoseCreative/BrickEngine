@@ -40,8 +40,19 @@ size_y = 1 // vertical size of the part
 colide = true // a boolean for part's colission
 // possibles values are true and false
 
+
+surf_l = 0
+surf_r = 0
+surf_t = 1
+surf_b = 0 // surafces's ids for the part
+// possibles values are 0 to 3
+
 //adds the part into a part list
 ds_list_add(global.part_list,id)
+
+
+
+
 
 part_num = 0
 
@@ -55,6 +66,10 @@ ds_map_add(prop,"X",x)
 ds_map_add(prop,"Y",y)
 ds_map_add(prop,"Color",color_id)
 ds_map_add(prop,"CanCollide",colide)
+ds_map_add(prop,"SurfT",surf_t)
+ds_map_add(prop,"SurfB",surf_b)
+ds_map_add(prop,"SurfL",surf_l)
+ds_map_add(prop,"SurfR",surf_r)
 
 ///creates a configuration map used for setting value types in the propeties map
 //creates map
@@ -66,6 +81,13 @@ ds_map_add(prop_config,"X",0)
 ds_map_add(prop_config,"Y",0)
 ds_map_add(prop_config,"Color",0)
 ds_map_add(prop_config,"CanCollide",1)
+ds_map_add(prop_config,"SurfT",0)
+ds_map_add(prop_config,"SurfB",0)
+ds_map_add(prop_config,"SurfL",0)
+ds_map_add(prop_config,"SurfR",0)
+
+
+move = false
 </string>
           </argument>
         </arguments>
@@ -135,6 +157,69 @@ size_y = ds_map_find_value(prop,"SizeY") //size_y
 x = ds_map_find_value(prop,"X") //position X
 y = ds_map_find_value(prop,"Y") //position Y
 colide = ds_map_find_value(prop,"CanCollide") //colide
+surf_l = ds_map_find_value(prop,"SurfL") //colide
+surf_r = ds_map_find_value(prop,"SurfR") //colide
+surf_t = ds_map_find_value(prop,"SurfT") //colide
+surf_b = ds_map_find_value(prop,"SurfB") //colide
+
+
+
+
+if move {
+    x = mouse_x
+    y = mouse_y
+    move_snap(4,4)
+    ds_map_replace(prop,"X",x)
+    ds_map_replace(prop,"Y",y)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="56">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>move = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if position_meeting(mouse_x,mouse_y,self) {
+    move = true
+}
 </string>
           </argument>
         </arguments>
@@ -159,20 +244,22 @@ colide = ds_map_find_value(prop,"CanCollide") //colide
             <kind>1</kind>
             <string>//this is when selecting the part in EditMode
 //it checks if the variable mouse_on_ui is off meaning that the mouse/cursor is not interacting with the GUI
-if global.mouse_on_ui = false {
-    global.cur_obj = id
-    with obj_propeties {
-            create_propeties(other.id)
-    }
-    global.cur_obj = id
-    } else {
-    if instance_exists(obj_prop_btn) {
-        with obj_prop_btn {
-            instance_destroy()
+    if global.mouse_on_ui = false {
+        global.cur_obj = id
+        with obj_propeties {
+                create_propeties(other.id)
         }
+        global.cur_obj = id
+        } else {
+        if instance_place(mouse_x,mouse_y,obj_part) != id {
+            if instance_exists(obj_prop_btn) {
+                with obj_prop_btn {
+                    instance_destroy()
+                }
+            }
+        }
+        global.cur_obj = noone
     }
-    global.cur_obj = noone
-}
 </string>
           </argument>
         </arguments>
@@ -195,7 +282,61 @@ if global.mouse_on_ui = false {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>if surf_t = 0 {
+    for(xx = 0; xx &lt; size_x; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_t,x-((size_x/2)*8)+(xx*8)+4,y-((size_y/2)*8)+4,1,1,0,global.colors[color_id],1)
+    }
+}
+
+if surf_b = 0 {
+    for(xx = 0; xx &lt; size_x; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_b,x-((size_x/2)*8)+(xx*8)+4,y+((size_y/2)*8)-4,1,1,180,global.colors[color_id],1)
+    }
+}
+
+if surf_l = 0 {
+    for(xx = 0; xx &lt; size_y; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_l,x-((size_x/2)*8)+4,y-((size_y/2)*8)+(xx*8)+4,1,1,90,global.colors[color_id],1)
+    }
+}
+
+if surf_r = 0 {
+    for(xx = 0; xx &lt; size_y; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_r,x+((size_x/2)*8)-4,y-((size_y/2)*8)+(xx*8)+4,1,1,-90,global.colors[color_id],1)
+    }
+}
+
+
+draw_self()
+
+
+if surf_t != 0 {
+    for(xx = 0; xx &lt; size_x; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_t,x-((size_x/2)*8)+(xx*8)+4,y-((size_y/2)*8)+4,1,1,0,global.colors[color_id],1)
+    }
+}
+
+if surf_b != 0 {
+    for(xx = 0; xx &lt; size_x; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_b,x-((size_x/2)*8)+(xx*8)+4,y+((size_y/2)*8)-4,1,1,180,global.colors[color_id],1)
+    }
+}
+
+if surf_l != 0 {
+    for(xx = 0; xx &lt; size_y; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_l,x-((size_x/2)*8)+4,y-((size_y/2)*8)+(xx*8)+4,1,1,90,global.colors[color_id],1)
+    }
+}
+
+if surf_r != 0 {
+    for(xx = 0; xx &lt; size_y; xx ++) {
+        draw_sprite_ext(spr_surfaces,surf_r,x+((size_x/2)*8)-4,y-((size_y/2)*8)+(xx*8)+4,1,1,-90,global.colors[color_id],1)
+    }
+}
+
+
+
+
 if global.cur_obj = id {
     draw_outline(c_teal,c_aqua,0,1)
 }

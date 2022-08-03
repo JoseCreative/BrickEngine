@@ -16,7 +16,11 @@ if file_exists(global.placefile2) {
             ds_map_replace(prop,"Color",map[? "color_id"])
             ds_map_replace(prop,"SizeX",map[? "SizeX"])
             ds_map_replace(prop,"SizeY",map[? "SizeY"])
-            ds_map_replace(prop,"CanCollide",map[? "CanCollide"])
+            ds_map_replace(prop,"CanCollide",map[? "colide"])
+            ds_map_replace(prop,"SurfT",map[? "st"])
+            ds_map_replace(prop,"SurfR",map[? "sr"])
+            ds_map_replace(prop,"SurfL",map[? "sl"])
+            ds_map_replace(prop,"SurfB",map[? "sb"])
         }
     }
     ds_map_destroy(wrap)

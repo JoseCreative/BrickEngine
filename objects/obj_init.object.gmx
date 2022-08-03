@@ -45,6 +45,13 @@ enum colors {
     Pink,
     Orange
 }
+enum surfaces {
+    nothing,
+    studs,
+    inlets,
+    weld
+}
+
 //variables containing the colors itself
 global.colors[0] = c_red //red
 global.colors[1] = c_blue //blue

@@ -14,6 +14,10 @@ with(obj_part){
     ds_map_add(map,"SizeX",size_x)
     ds_map_add(map,"SizeY",size_y)
     ds_map_add(map,"colide",colide)
+    ds_map_add(map,"st",surf_t)
+    ds_map_add(map,"sb",surf_b)
+    ds_map_add(map,"sl",surf_l)
+    ds_map_add(map,"sr",surf_r)
     
 }
 var wrap = ds_map_create()
