@@ -172,6 +172,9 @@ if move {
     ds_map_replace(prop,"X",x)
     ds_map_replace(prop,"Y",y)
 }
+
+
+depth = room_height+y
 </string>
           </argument>
         </arguments>

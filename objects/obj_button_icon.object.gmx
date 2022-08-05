@@ -60,7 +60,7 @@ btn_id = buttons.info
             <string>x = view_xview+xstart
 y = view_yview+ystart
 
-if position_meeting(mouse_x,mouse_y,id) {
+if position_meeting(mouse_x,mouse_y,obj_button_icon) {
     global.mouse_on_ui = true
 } else {
     global.mouse_on_ui = false
@@ -98,19 +98,21 @@ if position_meeting(mouse_x,mouse_y,id) {
 else
 if btn_id = buttons.removePart {
     if global.cur_obj != noone {
-        with global.cur_obj {
-            instance_destroy()
+        global.cur_obj.object_index = obj_part {
+            with global.cur_obj {
+                instance_destroy()
+            }
         }
     }
 }
 else
 if btn_id = buttons.save {
-    _dir = get_save_filename("*.blvl","Level.blvl")
-    scr_save(_dir)
+    _dir = get_save_filename("*.blvl","Level")
+    scr_save(_dir+".blvl")
 }
 else
 if btn_id = buttons.load {
-    _dir = get_open_filename("*.blvl","Level.blvl")
+    _dir = get_open_filename("*.blvl","")
     scr_load(_dir)
 }
 </string>

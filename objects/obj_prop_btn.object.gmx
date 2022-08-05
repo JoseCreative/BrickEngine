@@ -3,7 +3,7 @@
   <spriteName>spr_value</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-50</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -88,10 +88,12 @@ if prop_name != "" {
                 ds_map_replace(map,"X",mouse_x)
                 ds_map_replace(map,"Y",mouse_y)
             }
+        } else {
+            ds_map_replace(map,prop_name,show_value)
+            value_type = ds_map_find_value(config_map,prop_name)
         }
     }
 }
-
 
 if position_meeting(mouse_x,mouse_y,obj_prop_btn) {
     global.mouse_on_ui = true

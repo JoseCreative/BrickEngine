@@ -70,3 +70,18 @@ if _id.object_index = obj_part {
     prop.value = _id.surf_r
     prop.config_map = _conf_map
 }
+else
+
+if _id.object_index = obj_lvl {
+    prop = instance_create(x,y+0*13,obj_prop_btn)
+    prop.prop_name = "Sky Color"
+    prop.map = _map
+    prop.value = global.sky_col
+    prop.config_map = _conf_map
+    
+    prop = instance_create(x,y+1*13,obj_prop_btn)
+    prop.prop_name = "Level Name"
+    prop.map = _map
+    prop.value = global.lvl_name
+    prop.config_map = _conf_map
+}

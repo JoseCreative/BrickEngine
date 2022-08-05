@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>window_size = 4
+            <string>window_size = 2
+window_change_size(window_size)
 alarm[0]=1
 </string>
           </argument>
@@ -72,7 +73,7 @@ alarm[0]=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>window_set_caption("BrickGame: "+global.lvl_name = "Level")
+            <string>window_set_caption("BrickGame: "+string(global.lvl_name))
 </string>
           </argument>
         </arguments>
@@ -95,7 +96,7 @@ alarm[0]=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text_colour(mouse_x+32,mouse_y,string(global.mouse_on_ui),c_black,c_black,c_black,c_black,1)
+            <string>draw_text_colour(mouse_x+32,mouse_y,string(global.mouse_on_ui)+","+string(global.cur_obj)+","+string(global.lvl_name),c_black,c_black,c_black,c_black,1)
 </string>
           </argument>
         </arguments>

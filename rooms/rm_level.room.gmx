@@ -54,13 +54,13 @@
     <instance objName="obj_init" x="0" y="0" name="inst_25023286" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lvl" x="16" y="0" name="inst_06712191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_control" x="0" y="16" name="inst_51F200DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="20" y="20" name="inst_C33EF3B8" locked="0" code="btn_id = buttons.addPart&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="56" y="20" name="inst_4DC5A8E2" locked="0" code="btn_id = buttons.removePart&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="92" y="20" name="inst_05427B16" locked="0" code="btn_id = buttons.settings" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="300" y="20" name="inst_FAE9FF60" locked="0" code="btn_id = buttons.info&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="12" y="12" name="inst_C33EF3B8" locked="0" code="btn_id = buttons.addPart&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="28" y="12" name="inst_4DC5A8E2" locked="0" code="btn_id = buttons.removePart&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="44" y="12" name="inst_05427B16" locked="0" code="btn_id = buttons.settings" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="308" y="12" name="inst_FAE9FF60" locked="0" code="btn_id = buttons.info&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_propeties" x="220" y="52" name="inst_7945DCF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="128" y="20" name="inst_162CD016" locked="0" code="btn_id = buttons.save&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_icon" x="164" y="20" name="inst_7B6FBBE4" locked="0" code="btn_id = buttons.load&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="60" y="12" name="inst_162CD016" locked="0" code="btn_id = buttons.save&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_icon" x="76" y="12" name="inst_7B6FBBE4" locked="0" code="btn_id = buttons.load&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
